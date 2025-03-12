@@ -1,0 +1,26 @@
+<input type="file" id="profilePicInput" accept="image/*">
+<img id="profilePic" src="default.png" alt="Profile Picture" width="100">
+<script>
+    const input = document.getElementById('profilePicInput');
+    const profilePic = document.getElementById('profilePic');
+
+    // Load stored image when page loads
+    if (localStorage.getItem('profilePic')) {
+        profilePic.src = localStorage.getItem('profilePic');
+    }
+
+    input.addEventListener('change', function () {
+        const file = this.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const imageData = e.target.result;
+            localStorage.setItem('profilePic', imageData);
+            profilePic.src = imageData;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

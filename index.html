@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Around the World in 80 Plates</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<link rel="stylesheet" href="styles.css"> <!-- Link to custom styles -->
+</head>
+
+  <style>
+    
+        /* Animation for fade-in effect */
+        .card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .card img {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Trigger animation when scrolling */
+        .animated {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .category-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+            color: #f1b100;
+            font-style: italic;
+
+        }
+ /* Container for the scrolling effect */
+ .scrolling-wrapper {
+        display: flex;
+        overflow-x: hidden;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+        animation: scrollCards 30s linear infinite;
+    }
+
+    /* Keyframe animation for continuous scrolling */
+    @keyframes scrollCards {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }
+
+
+
+
+
+    /* Scroll Container */
+.scroll-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Scrolling Box */
+.scrolling-box {
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    width: 90%;
+    padding: 10px;
+    touch-action: pan-x; /* Allows horizontal touch scrolling */
+}
+
+/* Hide Scrollbar */
+.scrolling-box::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card Wrapper */
+.scrolling-wrapper {
+  display: flex;
+  gap: 15px;
+}
+
+/* Card Styles */
+.card {
+  width: 250px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Scroll Buttons */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.left-btn {
+  left: 0;
+}
+
+.right-btn {
+  right: 0;
+}
+
+.scroll-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+
+
+
+
+    .scrolling-wrapper {
+        display: flex;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        gap: 15px; /* Increased space between cards */
+        padding: 10px;
+        scroll-behavior: smooth;
+        white-space: nowrap;
+    }
+
+    .card {
+        flex: 0 0 auto;
+        width: 150px; /* Smaller card size */
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        margin: 10px; /* Increased space around each card */ }
+
+    .small-card img {
+        height: 100px; /* Smaller image size */
+        object-fit: cover;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        color: darkorchid;
+    }
+
+    .card-body {
+        padding: 8px;
+        text-align: center;
+        
+    }
+
+    .card-title {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .card-text {
+        font-size: 12px;
+        color: #666;
+    }
+
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+
+    .video-card {
+  width: 300px; /* Card width */
+  height: 200px; /* Card height */
+  background-color: #fff; /* Optional, for card background color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Card shadow */
+  overflow: hidden; /* Ensures content is clipped within the card */
+  position: relative; /* To position the video correctly inside the card */
+  margin: 20px; /* Space between cards */
+}
+
+.video-card-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video fills the card without distortion */
+  border-radius: 10px; /* Rounded corners for the video */
+}
+
+.scrolling-box {
+    width: 100%;
+    padding: 20px;
+    background: #f8f9fa; /* Light background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden;
+}
+
+/* Video Section Container */
+.video-section {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Video Card */
+.video-card {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Adjust size as needed */
+}
+
+.video-card video {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Overlay Text */
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.overlay-text h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.overlay-text p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Section Styling */
+.video-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Container for Video and Text */
+.container {
+    display: flex;
+    align-items: center;
+    max-width: 1100px;
+    width: 100%;
+}
+
+/* Video Card */
+.video-card {
+    flex: 1;
+    max-width: 50%;
+}
+
+.video-card video {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Text Content */
+.text-content {
+    flex: 1;
+    max-width: 50%;
+    padding-left: 30px;
+}
+
+.text-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.text-content p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+ /* Search Container */
+ .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background: #79ff5f;
+        }
+
+        /* Search Bar */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgb(238, 234, 0);
+            border-radius: 50px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Search Input */
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 50px;
+        }
+
+        /* Search Button */
+        .search-box button {
+            border: none;
+            background: #008106;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .search-box button:hover {
+            background: #00a716;
+            transform: scale(1.1);
+        }
+
+        /* Search Icon */
+        .search-icon {
+            font-size: 40px;
+            color: #00ff00;
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm px-4">
+    <div class="container">
+        <!-- Logo and Brand Name on the Left -->
+        <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="#">
+            <img src="images/logo2.png" alt="" class="navbar-logo me-2"> 80 Plates
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav d-flex align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link text-dark fw-semibold" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark fw-semibold" href="oll_recepi.php">Recipes</a>
+                </li>
+                <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="view_recipe.php">Blog</a></li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark fw-semibold" href="backend_html/user_search_ingredient.php">Ingredient Explorer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark fw-semibold" href="contact.php">Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark fw-semibold" href="about.php">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary fw-semibold ms-3" href="login.html">Login/Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    
+    
+    <div class="container mt-5">
+      
+ <!-- Hero Section with Bootstrap 5 Carousel -->
+ <section id="hero" class="mt-5">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <img src="images/1.png" class="d-block w-100" alt="Delicious Dish 1">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center">
+                    <!-- <h1 class="fw-bold text-light">Discover Unique Flavors from Every Corner of the World!</h1>
+                    <p class="lead text-light">Join our monthly challenge & explore a new cuisine.</p> -->
+                    <a href="oll_recepi.php" class="btn btn-primary btn-lg mt-3">Start Your Food Journey!</a>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <img src="images/2.png" class="d-block w-100" alt="Delicious Dish 2">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center">
+                    <h1 class="fw-bold text-light">Try This Month's Challenge: <span class="text-warning">"Taste of Thailand!"</span></h1>
+                    <p class="lead text-light">Master authentic Thai dishes & earn rewards.</p>
+                    <a href="challenges.html" class="btn btn-warning btn-lg mt-3">Join Challenge</a>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <img src="images/3.png" class="d-block w-100" alt="Delicious Dish 3">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center">
+                    <h1 class="fw-bold text-light">Cook, Share & Win Prizes!</h1>
+                    <p class="lead text-light">Upload your best recipe & get featured.</p>
+                    <a href="upload.html" class="btn btn-danger btn-lg mt-3">Upload Recipe</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+
+
+
+ <!-- Search Form -->
+ <form action="search.php" method="GET" class="search-box">
+    <input type="text" name="query" placeholder="Search recipes..." required>
+    <button type="submit"><i class="fas fa-search"></i> Search</button>
+</form>
+</div>
+
+    <script>
+        document.getElementById("searchButton").addEventListener("click", function() {
+            const query = document.getElementById("searchInput").value;
+            fetch(`oll_recepies/se1.php?search=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    const recipeContainer = document.getElementById("recipeContainer");
+                    recipeContainer.innerHTML = ""; // Clear existing content
+                    data.forEach(recipe => {
+                        const card = `
+                            <a href="oll_recepies/se1.php?id=${recipe.id}" class="card-link">
+                                <div class="card">
+                                    <img src="product_img/${recipe.id}.png" class="card-img-top" alt="${recipe.name}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${recipe.name}</h5>
+                                        <p class="card-text">${recipe.description}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        `;
+                        recipeContainer.innerHTML += card;
+                    });
+                });
+        });
+    </script>
+
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-card">
+            <video class="video-card-content" autoplay muted loop playsinline>
+                <source src="images/2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <div class="text-content">
+            <h2>About This Video</h2>
+            <p>
+                This video showcases the latest trends in urban development and city management. 
+                It highlights the importance of sustainable practices and innovative solutions 
+                for modern city planning.
+            </p>
+            <p>
+                With advancements in technology, city management is evolving rapidly. 
+                Our approach ensures efficient waste collection, real-time complaint tracking, 
+                and automated notifications for better urban governance.
+            </p>
+        </div>
+    </div>
+</section>
+
+<h2 class="category-title">🥘 Trending Recipes</h2>
+
+<!-- Horizontal Scrolling Cards -->
+<div class="container mt-5">
+    
+    <div class="scroll-container">
+      <button class="scroll-btn left-btn">&#10094;</button> <!-- Left Arrow -->
+      
+      <div class="scrolling-box">
+        <div class="scrolling-wrapper">
+          <!-- Card 1 -->
+          <a href="oll_recepies/se1.php" class="card-link">
+            <div class="card">
+              <img src="product_img/14.png" class="card-img-top" alt="Blueberry Smoothie">
+              <div class="card-body">
+                <h5 class="card-title">🍇 Blueberry Smoothie</h5>
+                <p class="card-text">A refreshing blend of blueberries, yogurt, and honey. 🥤</p>
+              </div>
+            </div>
+          </a>
+  
+          <!-- Card 2 -->
+          <a href="recipes/cheeseburger.html" class="card-link">
+            <div class="card">
+              <img src="images/21.jpeg" class="card-img-top" alt="Cheeseburger">
+              <div class="card-body">
+                <h5 class="card-title">🍔 Classic Cheeseburger</h5>
+                <p class="card-text">Juicy grilled beef with melted cheese and crispy fries. 🍟</p>
+              </div>
+            </div>
+          </a>
+  
+          <!-- Card 3 -->
+          <a href="recipes/pizza.html" class="card-link">
+            <div class="card">
+              <img src="images/Classic-Apple-Pie-Recipe-2-scaled.jpg" class="card-img-top" alt="Pizza">
+              <div class="card-body">
+                <h5 class="card-title">🍕 Pepperoni Pizza</h5>
+                <p class="card-text">Crispy crust with cheesy goodness and spicy pepperoni. 🔥</p>
+              </div>
+            </div>
+          </a>
+
+         
+          <!-- Card 6 -->
+          <a href="recipes/tacos.html" class="card-link">
+            <div class="card">
+              <img src="images/17.jpg" class="card-img-top" alt="Tacos">
+              <div class="card-body">
+                <h5 class="card-title">🌮 Spicy Chicken Tacos</h5>
+                <p class="card-text">Soft tortillas filled with spicy grilled chicken and veggies. 🌶️</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 7 -->
+          <a href="recipes/icecream.html" class="card-link">
+            <div class="card">
+              <img src="images/R (3).jpeg" class="card-img-top" alt="Ice Cream">
+              <div class="card-body">
+                <h5 class="card-title">🍦 Chocolate Ice Cream</h5>
+                <p class="card-text">Rich and creamy chocolate delight with sprinkles. 🍫</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 8 -->
+          <a href="recipes/cake.html" class="card-link">
+            <div class="card">
+              <img src="images/715.jpg" class="card-img-top" alt="Cake">
+              <div class="card-body">
+                <h5 class="card-title">🎂 Strawberry Cake</h5>
+                <p class="card-text">Fluffy cake topped with fresh strawberries and cream. 🍓</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 9 -->
+          <a href="recipes/salad.html" class="card-link">
+            <div class="card">
+              <img src="images/42.webp" class="card-img-top" alt="Salad">
+              <div class="card-body">
+                <h5 class="card-title">🥗 Greek Salad</h5>
+                <p class="card-text">A mix of fresh veggies, olives, and feta cheese. 🫒</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 10 -->
+          <a href="recipes/soup.html" class="card-link">
+            <div class="card">
+              <img src="images/39.jpg" class="card-img-top" alt="Soup">
+              <div class="card-body">
+                <h5 class="card-title">🥣 Tomato Soup</h5>
+                <p class="card-text">Warm and comforting homemade tomato soup. 🍅</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 11 -->
+          <a href="recipes/pancakes.html" class="card-link">
+            <div class="card">
+              <img src="images/30.webp" class="card-img-top" alt="Pancakes">
+              <div class="card-body">
+                <h5 class="card-title">🥞 Fluffy Pancakes</h5>
+                <p class="card-text">Golden pancakes topped with maple syrup and butter. 🍯</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 12 -->
+          <a href="recipes/coffee.html" class="card-link">
+            <div class="card">
+              <img src="images/36.webp" class="card-img-top" alt="Coffee">
+              <div class="card-body">
+                <h5 class="card-title">☕ Cappuccino</h5>
+                <p class="card-text">A perfect cup of coffee with frothy milk. 🥛</p>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+  
+      <button class="scroll-btn right-btn">&#10095;</button> <!-- Right Arrow -->
+    </div>
+</div>
+
+
+
+  
+
+
+<!-- Recipe Display Section -->
+<div id="recipeSection" class="container mt-4" style="display: none; margin-bottom: 0;">
+    <h2 id="recipeTitle" class="text-center"></h2>
+    <img id="recipeImage" class="d-block mx-auto my-3" src="" alt="" style="width: 300px; height: 200px; border-radius: 10px;">
+    <p id="recipeDescription" class="text-center"></p>
+    <h4>Steps:</h4>
+    <p id="recipeSteps"></p>
+</div>
+
+
+
+<!-- JavaScript to Handle Click and Fix White Space Issue -->
+<script>
+    function showRecipe(title, description, image, steps) {
+        const recipeSection = document.getElementById('recipeSection');
+
+        document.getElementById('recipeTitle').innerText = title;
+        document.getElementById('recipeDescription').innerText = description;
+        document.getElementById('recipeImage').src = 'images/' + image;
+        document.getElementById('recipeSteps').innerText = steps;
+
+        // Show the recipe section if it's hidden
+        if (recipeSection.style.display === "none") {
+            recipeSection.style.display = "block";
+        }
+
+        // Scroll smoothly to the exact section without white space
+        setTimeout(() => {
+            window.scrollTo({
+                top: recipeSection.offsetTop - 10, // Adjust the offset for smooth positioning
+                behavior: "smooth"
+            });
+        }, 100);
+    }
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const scrollBox = document.querySelector(".scrolling-box");
+    const leftBtn = document.querySelector(".left-btn");
+    const rightBtn = document.querySelector(".right-btn");
+
+    const scrollAmount = 250; // Adjust scrolling distance
+
+    rightBtn.addEventListener("click", () => {
+        scrollBox.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+
+    leftBtn.addEventListener("click", () => {
+        scrollBox.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    });
+
+    // Enable scrolling with mouse wheel
+    scrollBox.addEventListener("wheel", (event) => {
+        event.preventDefault();
+        scrollBox.scrollBy({ left: event.deltaY, behavior: "smooth" });
+    });
+});
+
+</script>
+
+
+
+<script>
+    // Scroll animation to fade in elements
+    document.addEventListener("DOMContentLoaded", function () {
+        let cards = document.querySelectorAll(".card");
+        let observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animated");
+                }
+            });
+        }, { threshold: 0.2 });
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    });
+</script>
+       
+<footer style="background-color: #222; color: #fff; padding: 40px 20px; text-align: center;">
+    <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; text-align: left;">
+        
+        <!-- About Section -->
+        <div style="flex: 1; min-width: 250px; margin: 20px;">
+            <h3 style="color: #ffcc00;">🍽️ About Us</h3>
+            <p>Welcome to <strong>Delicious Recipes</strong>, your go-to place for mouth-watering dishes, cooking tips, and expert advice. Explore, cook, and enjoy amazing meals!</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div style="flex: 1; min-width: 250px; margin: 20px;">
+            <h3 style="color: #ffcc00;">🔗 Quick Links</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="/recipes" style="color: #fff; text-decoration: none;">All Recipes</a></li>
+                <li><a href="/about" style="color: #fff; text-decoration: none;">About Us</a></li>
+                <li><a href="/contact" style="color: #fff; text-decoration: none;">Contact</a></li>
+                <li><a href="/privacy-policy" style="color: #fff; text-decoration: none;">Privacy Policy</a></li>
+                <li><a href="/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a></li>
+            </ul>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div style="flex: 1; min-width: 250px; margin: 20px;">
+            <h3 style="color: #ffcc00;">📩 Subscribe to Our Newsletter</h3>
+            <p>Get the latest recipes and cooking tips straight to your inbox!</p>
+            <form>
+                <input type="email" placeholder="Enter your email" style="padding: 10px; width: 80%; border-radius: 5px; border: none; margin: 5px 0;">
+                <button type="submit" style="padding: 10px 15px; background-color: #ffcc00; color: #222; border: none; border-radius: 5px; cursor: pointer;">Subscribe</button>
+            </form>
+        </div>
+
+        <!-- Contact & Social Media -->
+        <div style="flex: 1; min-width: 250px; margin: 20px;">
+            <h3 style="color: #ffcc00;">📞 Contact Us</h3>
+            <p>Email: <a href="mailto:info@deliciousrecipes.com" style="color: #ffcc00;">info@deliciousrecipes.com</a></p>
+            <p>Follow us on:</p>
+            <div>
+                <a href="#" style="color: #fff; margin: 0 10px; text-decoration: none;">Facebook</a> |
+                <a href="#" style="color: #fff; margin: 0 10px; text-decoration: none;">Instagram</a> |
+                <a href="#" style="color: #fff; margin: 0 10px; text-decoration: none;">YouTube</a> |
+                <a href="#" style="color: #fff; margin: 0 10px; text-decoration: none;">Pinterest</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div style="margin-top: 20px; border-top: 1px solid #444; padding-top: 10px; text-align: center;">
+        <p>© 2025 Delicious Recipes. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- 
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/5.png" class="card-img-top" alt="Recipe 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Recipe Title 1</h5>
+                        <p class="card-text">Short description of the recipe.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/7.png" class="card-img-top" alt="Recipe 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Recipe Title 2</h5>
+                        <p class="card-text">Short description of the recipe.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/5.png" class="card-img-top" alt="Recipe 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Recipe Title 3</h5>
+                        <p class="card-text">Short description of the recipe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

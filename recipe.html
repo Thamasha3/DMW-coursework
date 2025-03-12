@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <a href="index.html" class="btn btn-primary mb-3">Back to Recipes</a>
+
+    <div id="recipe-container" class="text-center">
+        <h2 id="recipe-title"></h2>
+        <img id="recipe-image" class="img-fluid rounded my-3" style="max-width: 400px;">
+        <p id="recipe-description"></p>
+    </div>
+</div>
+
+<script>
+    // Recipe Data
+    const recipes = {
+        1: {
+            title: "Italian Pasta",
+            image: "images/recipe1.jpg",
+            description: "A delicious and classic Italian pasta recipe made with fresh ingredients."
+        },
+        2: {
+            title: "Spicy Tacos",
+            image: "images/recipe2.jpg",
+            description: "Enjoy authentic Mexican-style tacos with a spicy kick."
+        },
+        3: {
+            title: "Sushi Rolls",
+            image: "images/recipe3.jpg",
+            description: "Fresh sushi rolls filled with salmon, avocado, and a touch of wasabi."
+        },
+        4: {
+            title: "French Croissant",
+            image: "images/recipe4.jpg",
+            description: "Buttery and flaky croissants baked to perfection."
+        },
+        5: {
+            title: "Indian Curry",
+            image: "images/recipe5.jpg",
+            description: "A rich and flavorful Indian curry made with aromatic spices."
+        }
+    };
+
+    // Get Recipe ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const recipeId = params.get('id');
+
+    // Display Recipe Details
+    if (recipes[recipeId]) {
+        document.getElementById("recipe-title").innerText = recipes[recipeId].title;
+        document.getElementById("recipe-image").src = recipes[recipeId].image;
+        document.getElementById("recipe-description").innerText = recipes[recipeId].description;
+    } else {
+        document.getElementById("recipe-container").innerHTML = "<h3>Recipe not found.</h3>";
+    }
+</script>
+
+</body>
+</html>
